@@ -3,3 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font: normal 15pt arial;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font: normal 10pt arial;
+  }
+}
