@@ -26,12 +26,13 @@ section {
 
 .data {
   background-color: black;
+  font-weight: bold;
   color: white;
   display: block;
   margin: auto;
   max-width: 350px;
-  max-height: 40px;
-  padding: 0px;
+  max-height: 50px;
+  padding: 8px 0px;
   margin-bottom: 8px;
   border-radius: 10px;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.705);
@@ -51,6 +52,14 @@ section {
   margin-bottom: 8px;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.705);
   border: 5px solid #C8C8C8;
+}
+
+.horaNoturna {
+  color: rgb(175, 255, 14);
+}
+
+.horaDiurna {
+  color: rgb(255, 30, 30);
 }
 
 .local {
@@ -87,10 +96,4 @@ section {
   max-width: 250px;
   border-radius: 50%;
   border: 10px solid #C8C8C8;
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    font: normal 10pt arial;
-  }
 }
