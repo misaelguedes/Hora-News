@@ -222,7 +222,7 @@ export default function App() {
         setClassBody('fimTardeTrovoada')
       } else if (descricao.includes('snow')) {
         setImagem(fimTardeNeve)
-        setClassBody('fimTardeNebe')
+        setClassBody('fimTardeNeve')
       }
     } else {
       if (descricao.includes('clear')) {
@@ -314,7 +314,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    updateTimeClass();
+    updateTempClass();
   
     if (temperatura !== "") {
       updateTempClass();
@@ -330,7 +330,7 @@ export default function App() {
   }, [descricao])
 
   return (
-    <div className="body">
+    <div className={classBody}>
       <Header/>
       <section>
         <div className="data">
