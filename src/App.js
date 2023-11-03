@@ -262,15 +262,11 @@ export default function App() {
     };
   }, []);
 
-  /*useEffect(() => {
-    navigator.geolocation.getCurrentPosition(getLocation);
-  }, []);*/
-
   useEffect(() => {
-    if ("geolocation" in navigator) {
+    if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(getLocation);
     } else {
-      console.error('A geolocalização não está disponível.');
+      console.error("Erro");
     }
   }, []);
 
@@ -312,6 +308,8 @@ export default function App() {
   };
 
   useEffect(() => {
+    getLocation()
+
     const locationAndTemperatureInterval = setInterval(() => {
       getLocation();
     }, 300000);
