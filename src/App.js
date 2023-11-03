@@ -262,8 +262,16 @@ export default function App() {
     };
   }, []);
 
-  useEffect(() => {
+  /*useEffect(() => {
     navigator.geolocation.getCurrentPosition(getLocation);
+  }, []);*/
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(getLocation);
+    } else {
+      console.error('A geolocalização não está disponível.');
+    }
   }, []);
 
   const getLocation = (position) => {
