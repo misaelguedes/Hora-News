@@ -262,61 +262,61 @@ export default function App() {
     };
   }, []);
 
-  useEffect(() => {
+  const getLocationAndUpdateWeather = () => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(getLocation);
-    } else {
-      console.error("Erro");
-    }
-  }, []);
+      navigator.geolocation.getCurrentPosition((position) => {
+        if (position && position.coords) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
 
-  const getLocation = (position) => {
-    if (position && position.coords) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-  
-      axios
-        .get(`https://www.mapquestapi.com/geocoding/v1/reverse?key=${apiKeyLoc}&location=${latitude},${longitude}`)
-        .then((locationResponse) => {
-          const city = locationResponse.data.results[0].locations[0].adminArea5;
-          const state = locationResponse.data.results[0].locations[0].adminArea3;
-          const country = locationResponse.data.results[0].locations[0].adminArea1;
-          setCidade(city);
-          setEstado(state);
-          setPais(country);
-  
+          axios
+            .get(`https://www.mapquestapi.com/geocoding/v1/reverse?key=${apiKeyLoc}&location=${latitude},${longitude}`)
+            .then((locationResponse) => {
+              const city = locationResponse.data.results[0].locations[0].adminArea5;
+              const state = locationResponse.data.results[0].locations[0].adminArea3;
+              const country = locationResponse.data.results[0].locations[0].adminArea1;
+              setCidade(city);
+              setEstado(state);
+              setPais(country);
+            })
+            .catch((locationError) => {
+              console.error('Erro ao obter informações de localização:', locationError);
+            });
+
           axios
             .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKeyTem}`)
             .then((response) => {
               const tempKelvin = response.data.main.temp;
               const tempCelsius = tempKelvin - 273.15;
               const weatherDescription = response.data.weather[0].description;
-  
+
               setTemperatura(`${tempCelsius.toFixed(0)}°C`);
               setDescricao(weatherDescription);
             })
             .catch((error) => {
               console.error('Erro ao obter informações de clima:', error);
             });
-        })
-        .catch((locationError) => {
-          console.error('Erro ao obter informações de localização:', locationError);
-        });
+        }
+      });
     } else {
-      console.error('A geolocalização não está disponível.');
+      console.error("Geolocalização não está disponível.");
     }
   };
 
   useEffect(() => {
-    getLocation()
+    const updateLocationAndTemperature = () => {
+      getLocationAndUpdateWeather();
 
-    const locationAndTemperatureInterval = setInterval(() => {
-      getLocation();
-    }, 300000);
-  
-    return () => {
-      clearInterval(locationAndTemperatureInterval);
+      const locationAndTemperatureInterval = setInterval(() => {
+        getLocationAndUpdateWeather();
+      }, 300000);
+
+      return () => {
+        clearInterval(locationAndTemperatureInterval);
+      };
     };
+
+    updateLocationAndTemperature();
   }, []);
 
   useEffect(() => {
