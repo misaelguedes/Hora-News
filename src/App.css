@@ -295,7 +295,7 @@ section {
   background-color: #0F2D5C;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 680px) {
   section {
     max-width: 80vw;
   }
