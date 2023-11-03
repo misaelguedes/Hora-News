@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -20,6 +21,18 @@ export default function App() {
   const nomeMes = meses[mes]
 
   const [classHoras, setClassHoras] = useState("")
+  const [classTemp, setClassTemp] = useState("")
+
+  const [cidade, setCidade] = useState("")
+  const [estado, setEstado] = useState("")
+  const [pais, setPais] = useState("")
+  const [temperatura, setTemperatura] = useState("")
+  const [descricao, setDescricao] = useState("")
+  const [longitude, setLongitude] = useState("")
+
+  const apiKeyLoc = 'aBpNERBRfAGtpLcbaGFmO6cFsjcHlOsK';
+
+  const apiKeyTem = '529da1a067e842b47730c617e0f33da5'
 
   const [time, setTime] = useState(new Date());
 
@@ -28,6 +41,26 @@ export default function App() {
       setClassHoras('horaNoturna');
     } else {
       setClassHoras('horaDiurna');
+    }
+  }
+
+  const updateTempClass = () => {
+    const temp = parseFloat(temperatura.replace('°C', ''));
+
+    if (temp < 0) {
+      setClassTemp('abaixoZero')
+    } else if (temp < 10) {
+      setClassTemp('abaixoDez')
+    } else if (temp < 16) {
+      setClassTemp('maiorDez')
+    } else if (temp < 25) {
+      setClassTemp('maiorDezesseis')
+    } else if (temp < 35) {
+      setClassTemp('maiorVinteecinco')
+    } else if (temp < 40) {
+      setClassTemp('maiorTrintaecinco')
+    } else {
+      setClassTemp('maiorQuarenta')
     }
   }
 
@@ -43,8 +76,77 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(getLocation, showError);
+  }, []);
+
+  const getLocation = (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    axios
+      .get(`https://www.mapquestapi.com/geocoding/v1/reverse?key=${apiKeyLoc}&location=${latitude},${longitude}`)
+      .then((locationResponse) => {
+        const city = locationResponse.data.results[0].locations[0].adminArea5;
+        const state = locationResponse.data.results[0].locations[0].adminArea3;
+        const country = locationResponse.data.results[0].locations[0].adminArea1;
+        setCidade(city)
+        setEstado(state)
+        setPais(country)
+
+        axios
+          .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKeyTem}`)
+          .then((response) => {
+            const tempKelvin = response.data.main.temp;
+            const tempCelsius = tempKelvin - 273.15;
+            const weatherDescription = response.data.weather[0].description;
+
+            setTemperatura(`${tempCelsius.toFixed(0)}°C`);
+            setDescricao(weatherDescription);
+          })
+          .catch((error) => {
+            console.error('Erro ao obter informações de clima:', error);
+          });
+      })
+      .catch((locationError) => {
+        console.error('Erro ao obter informações de localização:', locationError);
+      });
+  };
+
+  const showError = (error) => {
+    console.log(error.message);
+  };
+
+  useEffect(() => {
+    const locationInterval = setInterval(() => {
+      getLocation(); 
+    }, 300000);
+
+    return () => {
+      clearInterval(locationInterval);
+    };
+  }, [])
+
+  useEffect(() => {
+    const temperatureInterval = setInterval(() => {
+      getLocation(); 
+    }, 300000);
+
+    return () => {
+      clearInterval(temperatureInterval);
+    };
+  }, []);
+
+  useEffect(() => {
+    updateTimeClass();
+  
+    if (temperatura !== "") {
+      updateTempClass();
+    }
+  }, [temperatura]);
+
   return (
-    <div>
+    <div className="body">
       <Header/>
       <section>
         <div className="data">
@@ -60,12 +162,12 @@ export default function App() {
         <div className="local">
           <marquee direction="right" scrollamount="4">
             <div className="localizacao">
-        
+              {pais !== 'BR' ? `${cidade} - ${estado} - ${pais}` : `${cidade} - ${estado}`}
             </div>
           </marquee>
         </div>
-        <div className="clima">
-
+        <div className={`clima ${classTemp}`}>
+          {temperatura}
         </div>
         <div className="imagem">
           <img/>

@@ -65,12 +65,13 @@ section {
 .local {
   background-color: black;
   font-size: 16pt;
+  font-weight: bold;
   color: white;
   display: block;
   margin: auto;
   max-width: 220px;
-  max-height: 40px;
-  padding: 0px;
+  max-height: 50px;
+  padding: 8px 0px;
   margin-bottom: 8px;
   border-radius: 10px;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.705);
@@ -82,7 +83,7 @@ section {
   font-family: 'DS-Digital';
   font-size: 1.6em;
   text-align: center;
-  max-width: 65px;
+  max-width: 85px;
   padding: 5px;
   border-radius: 10px;
   margin-left: auto;
@@ -90,6 +91,34 @@ section {
   margin-bottom: 8px;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.705);
   border: 5px solid #C8C8C8;
+}
+
+.abaixoZero {
+  color: blue;
+}
+
+.abaixoDez {
+  color: rgb(126, 126, 255);
+}
+
+.maiorDez {
+  color: white;
+}
+
+.maiorDezesseis {
+  color: rgb(40, 221, 40);
+}
+
+.maiorVinteecinco {
+  color: rgb(255, 255, 54);
+}
+
+.maiorTrintaecinco {
+  color: rgb(255, 68, 0);
+}
+
+.maiorQuarenta {
+  color: rgb(255, 27, 27);
 }
 
 .imagem img {
