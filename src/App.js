@@ -260,6 +260,18 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    updateTimeClass();
+
+    const updateTimeClassInterval = setInterval(() => {
+      updateTimeClass();
+    }, 300000);
+
+    return () => {
+      clearInterval(updateTimeClassInterval);
+    };
+  }, []);
+
   const getLocationAndUpdateWeather = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -304,11 +316,9 @@ export default function App() {
   useEffect(() => {
     const updateLocationAndTemperature = () => {
       getLocationAndUpdateWeather();
-      updateTimeClass();
 
       const locationAndTemperatureInterval = setInterval(() => {
         getLocationAndUpdateWeather();
-        updateTimeClass();
       }, 300000);
 
       return () => {
