@@ -324,6 +324,14 @@ export default function App() {
   
     if (temperatura !== "") {
       updateTempClass();
+
+      const updateTempClassInterval = setInterval(() => {
+        updateTempClass();
+      }, 300000);
+
+      return () => {
+        clearInterval(updateTempClassInterval);
+      };
     }
   }, [temperatura]);
 
@@ -332,6 +340,14 @@ export default function App() {
 
     if (descricao !== "") {
       updateImagem();
+
+      const updateImagemInterval = setInterval(() => {
+        updateImagem();
+      }, 300000);
+
+      return () => {
+        clearInterval(updateImagemInterval);
+      };
     }
   }, [descricao])
 
