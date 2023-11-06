@@ -4,48 +4,48 @@ import './App.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
 
-import madrugadaLimpa from '../../hora/src/assets/madrugada-limpa.png'
-import madrugadaNublada from '../../hora/src/assets/madrugada-nublada.png'
-import madrugadaPoucasNuvens from '../../hora/src/assets/madrugada-poucas-nuvens.png'
-import madrugadaChuvosa from '../../hora/src/assets/madrugada-chuvosa.png'
-import madrugadaNeblina from '../../hora/src/assets/madrugada-neblina.png'
-import madrugadaTrovoada from '../../hora/src/assets/madrugada-trovoada.png'
-import madrugadaNeve from '../../hora/src/assets/madrugada-neve.png'
-import amanhecerCeuLimpo from '../../hora/src/assets/amanhecer-ceu-limpo.png'
-import amanhecerNublado from '../../hora/src/assets/amanhecer-nublado.png'
-import amanhecerPoucasNuvens from '../../hora/src/assets/amanhecer-poucas-nuvens.png'
-import amanhecerChuvoso from '../../hora/src/assets/amanhecer-chuvoso.png'
-import amanhecerNeblina from '../../hora/src/assets/amanhecer-neblina.png'
-import amanhecerTrovoada from '../../hora/src/assets/amanhecer-trovoada.png'
-import amanhecerNeve from '../../hora/src/assets/amanhecer-neve.png'
-import manhaLimpa from '../../hora/src/assets/manha-limpa.png'
-import manhaNublada from '../../hora/src/assets/manha-nublada.png'
-import manhaPoucasNuvens from '../../hora/src/assets/manha-poucas-nuvens.png'
-import manhaChuvosa from '../../hora/src/assets/manha-chuvosa.png'
-import manhaNeblina from '../../hora/src/assets/manha-neblina.png'
-import manhaTrovoada from '../../hora/src/assets/manha-trovoada.png'
-import manhaNeve from '../../hora/src/assets/manha-neve.png'
-import tardeLimpa from '../../hora/src/assets/tarde-limpa.png'
-import tardeNublada from '../../hora/src/assets/tarde-nublada.png'
-import tardePoucasNuvens from '../../hora/src/assets/tarde-poucas-nuvens.png'
-import tardeChuvosa from '../../hora/src/assets/tarde-chuvosa.png'
-import tardeNeblina from '../../hora/src/assets/tarde-neblina.png'
-import tardeTrovoada from '../../hora/src/assets/tarde-trovoada.png'
-import tardeNeve from '../../hora/src/assets/tarde-neve.png'
-import fimTardeLimpo from '../../hora/src/assets/fim-de-tarde-limpo.png'
-import fimTardeNublado from '../../hora/src/assets/fim-de-tarde-nublado.png'
-import fimTardePoucasNuvens from '../../hora/src/assets/fim-de-tarde-poucas-nuvens.png'
-import fimTardeChuvoso from '../../hora/src/assets/fim-de-tarde-chuvoso.png'
-import fimTardeNeblina from '../../hora/src/assets/fim-de-tarde-neblina.png'
-import fimTardeTrovoada from '../../hora/src/assets/fim-de-tarde-trovoada.png'
-import fimTardeNeve from '../../hora/src/assets/fim-de-tarde-neve.png'
-import noiteLimpa from '../../hora/src/assets/noite-limpa.png'
-import noiteNublada from '../../hora/src/assets/noite-nublada.png'
-import noitePoucasNuvens from '../../hora/src/assets/noite-poucas-nuvens.png'
-import noiteChuvosa from '../../hora/src/assets/noite-chuvosa.png'
-import noiteNeblina from '../../hora/src/assets/noite-neblina.png'
-import noiteTrovoada from '../../hora/src/assets/noite-trovoada.png'
-import noiteNeve from '../../hora/src/assets/noite-neve.png'
+import madrugadaLimpa from '../../Hora-do-Dia/src/assets/madrugada-limpa.png'
+import madrugadaNublada from '../../Hora-do-Dia/src/assets/madrugada-nublada.png'
+import madrugadaPoucasNuvens from '../../Hora-do-Dia/src/assets/madrugada-poucas-nuvens.png'
+import madrugadaChuvosa from '../../Hora-do-Dia/src/assets/madrugada-chuvosa.png'
+import madrugadaNeblina from '../../Hora-do-Dia/src/assets/madrugada-neblina.png'
+import madrugadaTrovoada from '../../Hora-do-Dia/src/assets/madrugada-trovoada.png'
+import madrugadaNeve from '../../Hora-do-Dia/src/assets/madrugada-neve.png'
+import amanhecerCeuLimpo from '../../Hora-do-Dia/src/assets/amanhecer-ceu-limpo.png'
+import amanhecerNublado from '../../Hora-do-Dia/src/assets/amanhecer-nublado.png'
+import amanhecerPoucasNuvens from '../../Hora-do-Dia/src/assets/amanhecer-poucas-nuvens.png'
+import amanhecerChuvoso from '../../Hora-do-Dia/src/assets/amanhecer-chuvoso.png'
+import amanhecerNeblina from '../../Hora-do-Dia/src/assets/amanhecer-neblina.png'
+import amanhecerTrovoada from '../../Hora-do-Dia/src/assets/amanhecer-trovoada.png'
+import amanhecerNeve from '../../Hora-do-Dia/src/assets/amanhecer-neve.png'
+import manhaLimpa from '../../Hora-do-Dia/src/assets/manha-limpa.png'
+import manhaNublada from '../../Hora-do-Dia/src/assets/manha-nublada.png'
+import manhaPoucasNuvens from '../../Hora-do-Dia/src/assets/manha-poucas-nuvens.png'
+import manhaChuvosa from '../../Hora-do-Dia/src/assets/manha-chuvosa.png'
+import manhaNeblina from '../../Hora-do-Dia/src/assets/manha-neblina.png'
+import manhaTrovoada from '../../Hora-do-Dia/src/assets/manha-trovoada.png'
+import manhaNeve from '../../Hora-do-Dia/src/assets/manha-neve.png'
+import tardeLimpa from '../../Hora-do-Dia/src/assets/tarde-limpa.png'
+import tardeNublada from '../../Hora-do-Dia/src/assets/tarde-nublada.png'
+import tardePoucasNuvens from '../../Hora-do-Dia/src/assets/tarde-poucas-nuvens.png'
+import tardeChuvosa from '../../Hora-do-Dia/src/assets/tarde-chuvosa.png'
+import tardeNeblina from '../../Hora-do-Dia/src/assets/tarde-neblina.png'
+import tardeTrovoada from '../../Hora-do-Dia/src/assets/tarde-trovoada.png'
+import tardeNeve from '../../Hora-do-Dia/src/assets/tarde-neve.png'
+import fimTardeLimpo from '../../Hora-do-Dia/src/assets/fim-de-tarde-limpo.png'
+import fimTardeNublado from '../../Hora-do-Dia/src/assets/fim-de-tarde-nublado.png'
+import fimTardePoucasNuvens from '../../Hora-do-Dia/src/assets/fim-de-tarde-poucas-nuvens.png'
+import fimTardeChuvoso from '../../Hora-do-Dia/src/assets/fim-de-tarde-chuvoso.png'
+import fimTardeNeblina from '../../Hora-do-Dia/src/assets/fim-de-tarde-neblina.png'
+import fimTardeTrovoada from '../../Hora-do-Dia/src/assets/fim-de-tarde-trovoada.png'
+import fimTardeNeve from '../../Hora-do-Dia/src/assets/fim-de-tarde-neve.png'
+import noiteLimpa from '../../Hora-do-Dia/src/assets/noite-limpa.png'
+import noiteNublada from '../../Hora-do-Dia/src/assets/noite-nublada.png'
+import noitePoucasNuvens from '../../Hora-do-Dia/src/assets/noite-poucas-nuvens.png'
+import noiteChuvosa from '../../Hora-do-Dia/src/assets/noite-chuvosa.png'
+import noiteNeblina from '../../Hora-do-Dia/src/assets/noite-neblina.png'
+import noiteTrovoada from '../../Hora-do-Dia/src/assets/noite-trovoada.png'
+import noiteNeve from '../../Hora-do-Dia/src/assets/noite-neve.png'
 
 export default function App() {
 
@@ -76,7 +76,7 @@ export default function App() {
 
   const apiKeyLoc = 'aBpNERBRfAGtpLcbaGFmO6cFsjcHlOsK';
 
-  const apiKeyTem = '529da1a067e842b47730c617e0f33da5'
+  const apiKeyTem = '529da1a067e842b47730c617e0f33da5';
 
   const [time, setTime] = useState(new Date());
 
@@ -251,8 +251,6 @@ export default function App() {
   }
 
   useEffect(() => {
-    updateTimeClass()
-
     const intervalId = setInterval(() => {
       setTime(new Date());
     }, 1000);
@@ -306,9 +304,11 @@ export default function App() {
   useEffect(() => {
     const updateLocationAndTemperature = () => {
       getLocationAndUpdateWeather();
+      updateTimeClass();
 
       const locationAndTemperatureInterval = setInterval(() => {
         getLocationAndUpdateWeather();
+        updateTimeClass();
       }, 300000);
 
       return () => {
