@@ -58,7 +58,7 @@ export default function App() {
   const minutos = data.getMinutes()
   const segundos = data.getSeconds()
 
-  const diasSemana = ['Domingo', 'Segunda-feita', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado']
+  const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado']
   const diaSemana = diasSemana[diaSem]
   const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
   const nomeMes = meses[mes]
