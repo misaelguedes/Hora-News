@@ -54,9 +54,10 @@ export default function App() {
   const mes = data.getMonth()
   const diaMes = data.getDate()
   const diaSem = data.getDay()
-  const horas = data.getHours()
-  const minutos = data.getMinutes()
-  const segundos = data.getSeconds()
+
+  const [horas, setHoras] = useState()
+  const [minutos, setMinutos] = useState()
+  const [segundos, setSegundos] = useState()
 
   const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado']
   const diaSemana = diasSemana[diaSem]
@@ -77,8 +78,6 @@ export default function App() {
   const apiKeyLoc = 'aBpNERBRfAGtpLcbaGFmO6cFsjcHlOsK';
 
   const apiKeyTem = '529da1a067e842b47730c617e0f33da5';
-
-  const [time, setTime] = useState(new Date());
 
   const updateTimeClass = () => {
     if (horas < 6 || horas >= 18) {
@@ -252,7 +251,10 @@ export default function App() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTime(new Date());
+      const currentTime = new Date();
+      setHoras(currentTime.getHours());
+      setMinutos(currentTime.getMinutes());
+      setSegundos(currentTime.getSeconds());
     }, 1000);
 
     return () => {
@@ -263,13 +265,15 @@ export default function App() {
   useEffect(() => {
     updateTimeClass();
 
-    const updateTimeClassInterval = setInterval(() => {
-      updateTimeClass();
-    }, 300000);
-
-    return () => {
-      clearInterval(updateTimeClassInterval);
-    };
+    if (horas !== '') {
+      const updateTimeClassInterval = setInterval(() => {
+        updateTimeClass();
+      }, 300000);
+  
+      return () => {
+        clearInterval(updateTimeClassInterval);
+      };
+    }
   }, [horas]);
 
   const getLocationAndUpdateWeather = () => {
@@ -340,10 +344,10 @@ export default function App() {
   useEffect(() => {
     updateImagem();
 
-    if (descricao !== "") {
+    if (descricao !== "" && horas !== '') {
       updateImagem();
     }
-  }, [descricao])
+  }, [descricao, horas])
 
   return (
     <div className={classBody}>
