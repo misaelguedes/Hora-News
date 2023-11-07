@@ -297,7 +297,7 @@ section {
 
 @media screen and (max-width: 680px) {
   section {
-    max-width: 80vw;
+    max-width: 90vw;
   }
 
   .data {
@@ -320,6 +320,6 @@ section {
   }
 
   .imagem img {
-    width: 60vw;
+    width: 70vw;
   }
 }
