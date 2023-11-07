@@ -270,7 +270,7 @@ export default function App() {
     return () => {
       clearInterval(updateTimeClassInterval);
     };
-  }, []);
+  }, [horas]);
 
   const getLocationAndUpdateWeather = () => {
     if ('geolocation' in navigator) {
@@ -334,14 +334,6 @@ export default function App() {
   
     if (temperatura !== "") {
       updateTempClass();
-
-      const updateTempClassInterval = setInterval(() => {
-        updateTempClass();
-      }, 300000);
-
-      return () => {
-        clearInterval(updateTempClassInterval);
-      };
     }
   }, [temperatura]);
 
@@ -350,14 +342,6 @@ export default function App() {
 
     if (descricao !== "") {
       updateImagem();
-
-      const updateImagemInterval = setInterval(() => {
-        updateImagem();
-      }, 300000);
-
-      return () => {
-        clearInterval(updateImagemInterval);
-      };
     }
   }, [descricao])
 
