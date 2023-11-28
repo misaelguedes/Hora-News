@@ -108,7 +108,7 @@ export default function App() {
   }
 
   const updateImagem = () => {
-    if (horas >= 0 && horas < 6) {
+    if (horas >= 0 && horas < 5) {
       if (descricao.includes('clear')) {
         setImagem(madrugadaLimpa)
         setClassBody('madrugadaLimpa')
@@ -131,7 +131,7 @@ export default function App() {
         setImagem(madrugadaNeve)
         setClassBody('madrugadaNeve')
       }
-    } else if (horas >= 6 && horas < 7) {
+    } else if (horas >= 5 && horas < 6) {
       if (descricao.includes('clear')) {
         setImagem(amanhecerCeuLimpo)
         setClassBody('amanhecerCeuLimpo')
@@ -154,7 +154,7 @@ export default function App() {
         setImagem(amanhecerNeve)
         setClassBody('amanhecerNeve')
       }
-    } else if (horas >= 7 && horas < 12) {
+    } else if (horas >= 6 && horas < 12) {
       if (descricao.includes('clear')) {
         setImagem(manhaLimpa)
         setClassBody('manhaLimpa')
