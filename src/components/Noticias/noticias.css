@@ -1,0 +1,26 @@
+.noticias {
+    background-color: black;
+    overflow-x: hidden;
+}
+
+.noticias-container {
+    background-color: black;
+    width: 100%;
+    padding: 5px;
+    white-space: nowrap;
+}
+
+.noticias a {
+    font-size: 0.8em;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 100px;
+    color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 680px) {
+    .noticias a {
+        font-size: 0.7em;
+    }
+}
