@@ -1,0 +1,319 @@
+@font-face {
+    font-family: 'DS-Digital';
+    src: url('../../fonts/DS-DIGIB.TTF');
+}
+
+.container {
+    padding: 20px 0;
+}
+  
+section {
+    background-image: url('../../assets/background2.jpg');
+    background-size: cover;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 530px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.data {
+    background-color: black;
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin: auto;
+    max-width: 360px;
+    max-height: 50px;
+    padding: 8px 0px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.705);
+    border: 5px solid #C8C8C8;
+}
+
+.hora {
+    background-image: url('../../assets/background.png');
+    font-family: 'DS-Digital';
+    font-size: 2.7em;
+    display: block;
+    margin: auto;
+    max-width: 275px;
+    padding: 7px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.705);
+    border: 5px solid #C8C8C8;
+}
+
+.horaNoturna {
+    color: rgb(175, 255, 14);
+}
+
+.horaDiurna {
+    color: rgb(255, 30, 30);
+}
+
+.local {
+    background-color: black;
+    font-size: 16pt;
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin: auto;
+    max-width: 230px;
+    max-height: 50px;
+    padding: 8px 0px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.705);
+    border: 5px solid #C8C8C8;
+}
+
+.clima {
+    background-image: url('../../assets/background.png');
+    font-family: 'DS-Digital';
+    font-size: 1.6em;
+    text-align: center;
+    max-width: 85px;
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.705);
+    border: 5px solid #C8C8C8;
+}
+
+.abaixoZero {
+    color: blue;
+}
+
+.abaixoDez {
+    color: rgb(126, 126, 255);
+}
+
+.maiorDez {
+    color: white;
+}
+
+.maiorDezesseis {
+    color: rgb(40, 221, 40);
+}
+
+.maiorVinteecinco {
+    color: rgb(255, 255, 54);
+}
+
+.maiorTrintaecinco {
+    color: rgb(255, 68, 0);
+}
+
+.maiorQuarenta {
+    color: rgb(255, 27, 27);
+}
+
+.imagem img {
+    max-width: 300px;
+    border-radius: 50%;
+    border: 10px solid #C8C8C8;
+}
+
+.madrugadaLimpa {
+    background-color: #000B21;
+}
+
+.madrugadaNublada {
+    background-color: #2D241F;
+}
+
+.madrugadaPoucasNuvens {
+    background-color: #223558;
+}
+
+.madrugadaChuvosa {
+    background-color: #1C2534;
+}
+
+.madrugadaNeblina {
+    background-color: #4C4C4C;
+}
+
+.madrugadaTrovoada {
+    background-color: #302F32;
+}
+
+.madrugadaNeve {
+    background-color: #424451;
+}
+
+.amanhecerCeuLimpo {
+    background-color: #FEEFC8;
+}
+
+.amanhecerNublado {
+    background-color: #929DA1;
+}
+
+.amanhecerPoucasNuvens {
+    background-color: #EBD37C;
+}
+
+.amanhecerChuvoso {
+    background-color: #4D5967;
+}
+
+.amanhecerNeblina {
+    background-color: #CEAD9D;
+}
+
+.amanhecerTrovoada {
+    background-color: #6B5851;
+}
+
+.amanhecerNeve {
+    background-color: #E9E3D2;
+}
+
+.manhaLimpa {
+    background-color: #8CAACC;
+}
+
+.manhaNublada {
+    background-color: #E8E3EA;
+}
+
+.manhaPoucasNuvens {
+    background-color: #83B6D9;
+}
+
+.manhaChuvosa {
+    background-color: #9EB2C1;
+}
+
+.manhaNeblina {
+    background-color: #C6D6F3;
+}
+
+.manhaTrovoada {
+    background-color: #AEB7C0;
+}
+
+.manhaNeve {
+    background-color: #D4CCBF;
+}
+
+.tardeLimpa {
+    background-color: #4A88D3;
+}
+
+.tardeNublada {
+    background-color: #AFABA3;
+}
+
+.tardePoucasNuvens {
+    background-color: #599BBC;
+}
+
+.tardeChuvosa {
+    background-color: #B6B7B2;
+}
+
+.tardeNeblina {
+    background-color: #BCDCFD;
+}
+
+.tardeTrovoada {
+    background-color: #A295A9;
+}
+
+.tardeNeve {
+    background-color: #FFFFFF;
+}
+
+.fimTardeLimpo {
+    background-color: #EEC299;
+}
+
+.fimTardeNublado {
+    background-color: #665355;
+}
+
+.fimTardePoucasNuvens {
+    background-color: #F1A22E;
+}
+
+.fimTardeChuvoso {
+    background-color: #8C9BB2;
+}
+
+.fimTardeNeblina {
+    background-color: #959394;
+}
+
+.fimTardeTrovoada {
+    background-color: #776983;
+}
+
+.fimTardeNeve {
+    background-color: #4A7197;
+}
+
+.noiteLimpa {
+    background-color: #05306A;
+}
+
+.noiteNublada {
+    background-color: #3A5757;
+}
+
+.noitePoucasNuvens {
+    background-color: #3E3A5F;
+}
+
+.noiteChuvosa {
+    background-color: #285566;
+}
+
+.noiteNeblina {
+    background-color: #5C6771;
+}
+
+.noiteTrovoada {
+    background-color: #221F54;
+}
+
+.noiteNeve {
+    background-color: #0F2D5C;
+}
+
+@media screen and (max-width: 680px) {
+    section {
+        max-width: 90vw;
+    }
+
+    .data {
+        font-size: 0.9em;
+        max-height: 45px;
+    }
+
+    .hora {
+        font-size: 2.4em;
+        max-width: 250px;
+    }
+
+    .local {
+        font-size: 14pt;
+        max-height: 45px;
+    }
+
+    .clima {
+        font-size: 1.4em;
+    }
+
+    .imagem img {
+        width: 70vw;
+    }
+}
