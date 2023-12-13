@@ -1,0 +1,23 @@
+.noticia-container {
+    background-color: black;
+    padding: 5px 0;
+    border-top: 5px solid #C8C8C8;
+}
+
+.noticia-container a {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+@media screen and (max-width: 680px) {
+    .noticia-container {
+        max-height: 40px;
+    }
+
+    .noticia-container a {
+        font-size: 0.8em;
+    }
+}
