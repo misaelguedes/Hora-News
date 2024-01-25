@@ -45,6 +45,8 @@ import noiteNeblina from '../../assets/noite-neblina.png'
 import noiteTrovoada from '../../assets/noite-trovoada.png'
 import noiteNeve from '../../assets/noite-neve.png'
 
+const apiKeyTem = '529da1a067e842b47730c617e0f33da5';
+
 export default function Section() {
 
     const data = new Date()
@@ -72,10 +74,6 @@ export default function Section() {
     const [temperatura, setTemperatura] = useState("")
     const [descricao, setDescricao] = useState("")
     const [imagem, setImagem] = useState()
-
-    const apiKeyLoc = 'aBpNERBRfAGtpLcbaGFmO6cFsjcHlOsK';
-
-    const apiKeyTem = '529da1a067e842b47730c617e0f33da5';
 
     const updateTimeClass = () => {
         if (horas < 6 || horas >= 18) {
@@ -274,49 +272,89 @@ export default function Section() {
         }
     }, [horas]);
 
-    const getLocationAndUpdateWeather = () => {
-        if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            if (position && position.coords) {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-
-            axios
-                .get(`https://www.mapquestapi.com/geocoding/v1/reverse?key=${apiKeyLoc}&location=${latitude},${longitude}`)
-                .then((locationResponse) => {
-                const city = locationResponse.data.results[0].locations[0].adminArea5;
-                const state = locationResponse.data.results[0].locations[0].adminArea3;
-                const country = locationResponse.data.results[0].locations[0].adminArea1;
-                setCidade(city);
-                setEstado(state);
-                setPais(country);
-                })
-                .catch((locationError) => {
-                console.error('Erro ao obter informações de localização:', locationError);
-                });
-
-            axios
-                .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKeyTem}`)
-                .then((response) => {
-                const tempKelvin = response.data.main.temp;
-                const tempCelsius = tempKelvin - 273.15;
-                const weatherDescription = response.data.weather[0].description;
-
-                setTemperatura(`${tempCelsius.toFixed(0)}°C`);
-                setDescricao(weatherDescription);
-                })
-                .catch((error) => {
-                console.error('Erro ao obter informações de clima:', error);
-                });
-            }
-        });
-        } else {
-        console.error("Geolocalização não está disponível.");
+    const getWeatherData = async (latitude, longitude) => {
+        try {
+          const response = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKeyTem}`
+          );
+    
+          const tempKelvin = response.data.main.temp;
+          const tempCelsius = tempKelvin - 273.15;
+          const weatherDescription = response.data.weather[0].description;
+    
+          setTemperatura(`${tempCelsius.toFixed(0)}°C`);
+          setDescricao(weatherDescription);
+        } catch (error) {
+          console.error('Erro ao obter informações de clima:', error);
         }
     };
-
+    
+    const getLocationAndUpdateWeather = async () => {
+        if ('geolocation' in navigator) {
+          try {
+            const position = await new Promise((resolve, reject) => {
+              navigator.geolocation.getCurrentPosition(resolve, reject);
+            });
+    
+            if (position && position.coords) {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+    
+              getWeatherData(latitude, longitude);
+    
+              axios
+                .get(
+                  `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+                )
+                .then((locationResponse) => {
+                  const city = locationResponse.data.address.city;
+                  const state = locationResponse.data.address.state;
+                  const country = locationResponse.data.address.country_code;
+    
+                  setCidade(city);
+                  setEstado(state);
+                  setPais(country);
+                })
+                .catch((locationError) => {
+                  console.error('Erro ao obter informações de localização:', locationError);
+                });
+            }
+                } catch (error) {
+                    console.error('Erro ao obter informações de localização:', error);
+                }
+        } else {
+            console.error('Geolocalização não está disponível.');
+        }
+    };
+    
     useEffect(() => {
-        const updateLocationAndTemperature = () => {
+        const intervalId = setInterval(() => {
+            const currentTime = new Date();
+            setHoras(currentTime.getHours());
+            setMinutos(currentTime.getMinutes());
+            setSegundos(currentTime.getSeconds());
+        }, 1000);
+    
+        return () => {
+          clearInterval(intervalId);
+        };
+    }, []);
+    
+    useEffect(() => {
+        updateTimeClass();
+
+        if (horas !== '') {
+            const updateTimeClassInterval = setInterval(() => {
+            updateTimeClass();
+    }, 300000);
+
+        return () => {
+        clearInterval(updateTimeClassInterval);
+        };
+    }
+    }, [horas]);
+    
+    useEffect(() => {
         getLocationAndUpdateWeather();
 
         const locationAndTemperatureInterval = setInterval(() => {
@@ -326,26 +364,23 @@ export default function Section() {
         return () => {
             clearInterval(locationAndTemperatureInterval);
         };
-        };
-
-        updateLocationAndTemperature();
     }, []);
-
+    
     useEffect(() => {
         updateTempClass();
-    
-        if (temperatura !== "") {
-        updateTempClass();
+
+        if (temperatura !== '') {
+            updateTempClass();
         }
     }, [temperatura]);
-
+    
     useEffect(() => {
         updateImagem();
 
-        if (descricao !== "" && horas !== '') {
-        updateImagem();
+        if (descricao !== '' && horas !== '') {
+            updateImagem();
         }
-    }, [descricao, horas])
+    }, [descricao, horas]);
 
     return (
         <div className={`container ${classBody}`}>
@@ -360,7 +395,7 @@ export default function Section() {
                 </div>
                 <div className="local">
                     <marquee direction="right" scrollamount="4">
-                        {pais !== 'BR' ? `${cidade} - ${estado} - ${pais}` : `${cidade} - ${estado}`}
+                        {pais !== 'br' ? `${cidade} - ${estado} - ${pais.toUpperCase()}` : `${cidade} - ${estado}`}
                     </marquee>
                 </div>
                 <div className={`clima ${classTemp}`}>
