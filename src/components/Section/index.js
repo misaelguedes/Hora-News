@@ -394,7 +394,7 @@ export default function Section() {
                     {horas < 10 ? `0${horas}` : horas} : {minutos < 10 ? `0${minutos}` : minutos} : {segundos < 10 ? `0${segundos}` : segundos}
                 </div>
                 <div className="local">
-                    <marquee direction="right" scrollamount="4">
+                    <marquee scrollamount="4">
                         {pais !== 'br' ? `${cidade} - ${estado} - ${pais.toUpperCase()}` : `${cidade} - ${estado}`}
                     </marquee>
                 </div>
