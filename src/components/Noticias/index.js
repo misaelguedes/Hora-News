@@ -11,10 +11,10 @@ export default function Noticias() {
     useEffect(() => {
         axios.get('https://newsdata.io/api/1/news?country=br&apikey=pub_34429d0d3f4f03b10113f804ff3495fd64af7')
         .then((res) => {
-            const novasNoticias = res.data.results.filter(noticia => !noticiasExibidas.has(noticia.article_id))
+            const novasNoticias = res.data.results.filter(noticia => !noticiasExibidas.has(noticia.title))
             setNoticias(prevNoticias => [...prevNoticias, ...novasNoticias])
             novasNoticias.forEach(noticia => {
-                noticiasExibidas.add(noticia.article_id)
+                noticiasExibidas.add(noticia.title)
             })
         })
         .catch((error) => {
