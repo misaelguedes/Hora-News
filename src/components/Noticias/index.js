@@ -6,16 +6,11 @@ export default function Noticias() {
 
     const [noticias, setNoticias] = useState([])
     const [erro, setErro] = useState(false)
-    const [noticiasExibidas, setNoticiasExibidas] = useState(new Set())
 
     useEffect(() => {
         axios.get('https://newsdata.io/api/1/news?country=br&apikey=pub_34429d0d3f4f03b10113f804ff3495fd64af7')
         .then((res) => {
-            const novasNoticias = res.data.results.filter(noticia => !noticiasExibidas.has(noticia.title))
-            setNoticias(prevNoticias => [...prevNoticias, ...novasNoticias])
-            novasNoticias.forEach(noticia => {
-                noticiasExibidas.add(noticia.title)
-            })
+            setNoticias(res.data.results)
         })
         .catch((error) => {
             console.log(error)
