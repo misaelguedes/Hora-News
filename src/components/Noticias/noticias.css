@@ -12,6 +12,10 @@
     margin-right: 50px;
 }
 
+.noticia-container-erro {
+    display: none;
+}
+
 @media screen and (max-width: 680px) {
     .noticia-container {
         max-height: 40px;

@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function Noticias() {
 
     const [noticias, setNoticias] = useState([])
-    const [erro, setErro] = useState(false)
+    const [status, setStatus] = useState('noticia-container')
 
     useEffect(() => {
         axios.get('https://newsdata.io/api/1/news?country=br&apikey=pub_34429d0d3f4f03b10113f804ff3495fd64af7')
@@ -14,13 +14,13 @@ export default function Noticias() {
         })
         .catch((error) => {
             console.log(error)
-            setErro(true)
+            setStatus('noticia-container-erro')
         })
     }, [])
 
     return (
-        <div className='noticia-container'>
-            {erro === false && (
+        <div className={status}>
+            {
                 <marquee>
                     {noticias.map((noticia) => (
                         <span key={noticia.article_id}>
@@ -28,7 +28,7 @@ export default function Noticias() {
                         </span>
                     ))}
                 </marquee>
-            )}
+            }
         </div>
     )
 }
