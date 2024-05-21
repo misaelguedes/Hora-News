@@ -70,6 +70,7 @@ export default function Section() {
 
     const [cidade, setCidade] = useState("")
     const [estado, setEstado] = useState("")
+    const [siglaEstado, setSiglaEstado] = useState("")
     const [pais, setPais] = useState("")
     const [temperatura, setTemperatura] = useState("")
     const [descricao, setDescricao] = useState("")
@@ -314,6 +315,95 @@ export default function Section() {
                   setCidade(city);
                   setEstado(state);
                   setPais(country);
+
+                  let siglaEstado;
+                    switch (state) {
+                    case "Acre":
+                        siglaEstado = "AC";
+                        break;
+                    case "Alagoas":
+                        siglaEstado = "AL";
+                        break;
+                    case "Amapá":
+                        siglaEstado = "AP";
+                        break;
+                    case "Amazonas":
+                        siglaEstado = "AM";
+                        break;
+                    case "Bahia":
+                        siglaEstado = "BA";
+                        break;
+                    case "Ceará":
+                        siglaEstado = "CE";
+                        break;
+                    case "Distrito Federal":
+                        siglaEstado = "DF";
+                        break;
+                    case "Espírito Santo":
+                        siglaEstado = "ES";
+                        break;
+                    case "Goiás":
+                        siglaEstado = "GO";
+                        break;
+                    case "Maranhão":
+                        siglaEstado = "MA";
+                        break;
+                    case "Mato Grosso":
+                        siglaEstado = "MT";
+                        break;
+                    case "Mato Grosso do Sul":
+                        siglaEstado = "MS";
+                        break;
+                    case "Minas Gerais":
+                        siglaEstado = "MG";
+                        break;
+                    case "Pará":
+                        siglaEstado = "PA";
+                        break;
+                    case "Paraíba":
+                        siglaEstado = "PB";
+                        break;
+                    case "Paraná":
+                        siglaEstado = "PR";
+                        break;
+                    case "Pernambuco":
+                        siglaEstado = "PE";
+                        break;
+                    case "Piauí":
+                        siglaEstado = "PI";
+                        break;
+                    case "Rio de Janeiro":
+                        siglaEstado = "RJ";
+                        break;
+                    case "Rio Grande do Norte":
+                        siglaEstado = "RN";
+                        break;
+                    case "Rio Grande do Sul":
+                        siglaEstado = "RS";
+                        break;
+                    case "Rondônia":
+                        siglaEstado = "RO";
+                        break;
+                    case "Roraima":
+                        siglaEstado = "RR";
+                        break;
+                    case "Santa Catarina":
+                        siglaEstado = "SC";
+                        break;
+                    case "São Paulo":
+                        siglaEstado = "SP";
+                        break;
+                    case "Sergipe":
+                        siglaEstado = "SE";
+                        break;
+                    case "Tocantins":
+                        siglaEstado = "TO";
+                        break;
+                    default:
+                        siglaEstado = "Desconhecido";
+                    }
+
+                    setSiglaEstado(siglaEstado);
                 })
                 .catch((locationError) => {
                   console.error('Erro ao obter informações de localização:', locationError);
@@ -395,7 +485,7 @@ export default function Section() {
                 </div>
                 <div className="local">
                     <marquee scrollamount="4">
-                        {pais !== 'br' ? `${cidade} - ${estado} - ${pais.toUpperCase()}` : `${cidade} - ${estado}`}
+                        {pais !== 'br' ? `${cidade} - ${estado} - ${pais.toUpperCase()}` : `${cidade} - ${siglaEstado}`}
                     </marquee>
                 </div>
                 <div className={`clima ${classTemp}`}>
